@@ -59,19 +59,27 @@ bool xorBuffer(unsigned char *buffer) {
         // CRC-32
         // 32 31 30 29 28 27 26 25 24 23 22 21 20 19 18 17 16 15 14 13 12 11 10 09 08 07 06 05 04 03 02 01 00
         //	1  0  0  0  0  0  1  0  0  1  1  0  0  0  0  0  1  0  0  0  1  1  1  0  1  1  0  1  1  0  1  1  1
+        //     0  0  0  0  0  1  0  0  1  1  0  0  0  0  0  1  0  0  0  1  1  1  0  1  1  0  1  1  0  1  1  1
+        //     0  0  0  0  0  1  0  0  1  1  0  0  0  0  0  1  0  0  0  1  1  1  0  1  1  0  1  1  0  1  1  1
         // = 2227247543
         //const int divider = 2227247543;
+        // 3988292384
+       // const int dividerSizeBits = 33;
+     //   const bool binaryDivider[dividerSizeBits] = { 1,0,0,0,0,0,1,0,0,1,1,0,0,0,0,0,1,0,0,0,1,1,1,0,1,1,0,1,1,0,1,1,1 };
+
         const int dividerSizeBits = 33;
-        const bool binaryDivider[dividerSizeBits] = { 1,0,0,0,0,1,0,0,1,1,0,0,0,0,0,1,0,0,0,1,1,0,0,1,1,0,1,1,0,1,1,1 };
+        //const bool binaryDivider[dividerSizeBits] = { 1,0,0,0,0,0,1,0,0,1,1,0,0,0,0,0,1,0,0,0,1,1,1,0,1,1,0,1,1,0,1,1,1 };
+        const bool binaryDivider[dividerSizeBits] = { 1,1,1,0,1,1,0,1,1,0,1,1,1,0,0,0,1,0,0,0,0,0,1,1,0,0,1,0,0,0,0,0,1 };
+
         //unique_ptr<bool[]> binaryDivider = intToBits(divider);
         const int dividerLength = countLength(binaryDivider, dividerSizeBits);
         const int dividerOffset = dividerSizeBits - dividerLength;
         cout << "Divider offset (should be 5): = " << std::dec << dividerOffset << endl << "Divider length (should be 27): = " << dividerLength << endl;
 
         bool * binaryTab = charTabToBits(buffer);
-        cout << "binaryTab : ";
+        cout << "binaryTab : " << endl;
         for (int k = 0; k < 64; k++) {
-            cout << binaryTab[k] << ";";
+            cout << binaryTab[k] << "|";
         }
         cout << endl;
         // check tab if first part = 0
@@ -83,14 +91,14 @@ bool xorBuffer(unsigned char *buffer) {
                     break;
             cout << "start: " << std::dec << start << endl;
             for (int k = 0; k < 64; k++) {
-                cout << binaryTab[k] << ";";
+                cout << binaryTab[k] << "|";
             }
             cout << endl;
             for (int k = 0; k < start; k++) {
                 cout << "  ";
             }
             for (int k = 0; k < dividerLength; k++) {
-                cout << binaryDivider[k + dividerOffset] << ";";
+                cout << binaryDivider[k + dividerOffset] << "|";
             }
             cout << endl;
             for (int i = 0; i < dividerLength; i++)
@@ -98,7 +106,7 @@ bool xorBuffer(unsigned char *buffer) {
         }
         cout << "binaryTab after xor: " << endl;
         for (int k = 0; k < 64; k++) {
-            cout << binaryTab[k] << ";";
+            cout << binaryTab[k] << "|";
         }
         cout << endl;
         // binaryTab -> charTab
@@ -124,13 +132,13 @@ std::string CRC::countCRC(std::string fileName)
     //unique_ptr<char[]> buffer(new char[bufferSize]);
     unsigned char *buffer = new unsigned char[bufferSize];
 
-    //for (int i = 0; i < 2 * bufferOnePartSize; i++)
-    //	buffer[i] = 0;
-    //for (int i = 2 * bufferOnePartSize; i < bufferSize; i++)
-    //	buffer[i] = 255;
-
-    for (int i = 0; i < 3 * bufferOnePartSize; i++)
+    for (int i = 0; i < 2 * bufferOnePartSize; i++)
         buffer[i] = 0;
+    for (int i = 2 * bufferOnePartSize; i < bufferSize; i++)
+        buffer[i] = 255;
+
+//    for (int i = 0; i < 3 * bufferOnePartSize; i++)
+//        buffer[i] = 0;
 
 
     // open file
@@ -144,8 +152,8 @@ std::string CRC::countCRC(std::string fileName)
         // TODO check if file <= 4 -> another solution
 
         char ch;
-        int multiply = 2;
-        bool skipNormalXor = false;
+        int multiply = 1;
+        bool skipNormalXor = true;
         while (true) {
             count = 0;
             if (multiply == 2)
@@ -232,11 +240,16 @@ std::string CRC::countCRC(std::string fileName)
     }
 
     stringstream crcSum;
+    uint32_t crcs = 0;
     for (int i = 2 * bufferOnePartSize; i < bufferSize; i++) {
+        crcs += buffer[i] << (24 - (8 * i));
+        buffer[i] = ~buffer[i];
         crcSum << std::hex << (unsigned int)buffer[i];
        //printf("buffer[%d] = %02x \n", i, buffer[i]);
     }
     cout << "\n CRC: " << crcSum.str() << endl;
+    crcs = crcs ^ 0xFFFFFFFF;
+    cout << "crcs = " << std::hex <<  crcs << endl;
 
     delete[] buffer;
     return crcSum.str();

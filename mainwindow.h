@@ -22,6 +22,10 @@ private slots:
 
     void on_filepathBtn_clicked();
 
+    void on_boostGenBtn_clicked();
+
+    void on_boostCheckBtn_clicked();
+
 private:
     Ui::MainWindow *ui;
 };
