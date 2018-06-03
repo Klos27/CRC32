@@ -29,11 +29,13 @@ LIBS += "-LC:/boost_1_53_0/stage/lib/"
 SOURCES += \
         main.cpp \
         mainwindow.cpp \
-    crc.cpp
+    crc.cpp \
+    crc_old.cpp
 
 HEADERS += \
         mainwindow.h \
-    crc.h
+    crc.h \
+    crc_old.h
 
 FORMS += \
         mainwindow.ui

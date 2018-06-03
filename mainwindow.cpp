@@ -53,6 +53,10 @@ void MainWindow::on_generateCRCBtn_clicked()
     ui->infoLabel->setText("Generating CRC32...");
     ui->checkCRCBtn->setDisabled(true);
     ui->generateCRCBtn->setDisabled(true);
+    ui->boostCheckBtn->setDisabled(true);
+    ui->boostGenBtn->setDisabled(true);
+    ui->generateCRCTabBtn->setDisabled(true);
+    ui->checkCRCTabBtn->setDisabled(true);
     QWidget::repaint();
 
     if(ifFileExists(ui->filepathText->text())){
@@ -66,6 +70,10 @@ void MainWindow::on_generateCRCBtn_clicked()
         catch(std::exception e){
             ui->checkCRCBtn->setDisabled(false);
             ui->generateCRCBtn->setDisabled(false);
+            ui->boostCheckBtn->setDisabled(false);
+            ui->boostGenBtn->setDisabled(false);
+            ui->generateCRCTabBtn->setDisabled(false);
+            ui->checkCRCTabBtn->setDisabled(false);
             ui->infoLabel->setText("Something got wrong, try again...");
         }
     }
@@ -75,6 +83,10 @@ void MainWindow::on_generateCRCBtn_clicked()
     }
     ui->checkCRCBtn->setDisabled(false);
     ui->generateCRCBtn->setDisabled(false);
+    ui->boostCheckBtn->setDisabled(false);
+    ui->boostGenBtn->setDisabled(false);
+    ui->generateCRCTabBtn->setDisabled(false);
+    ui->checkCRCTabBtn->setDisabled(false);
     timeEnd = clock();
     double timeElapsed = diffclock(timeStart, timeEnd);
     std::string timeString = "Time elapsed: " + std::to_string(timeElapsed) + " [sec]";
@@ -91,6 +103,10 @@ void MainWindow::on_checkCRCBtn_clicked()
     ui->infoLabel->setText("Checking CRC32...");
     ui->checkCRCBtn->setDisabled(true);
     ui->generateCRCBtn->setDisabled(true);
+    ui->boostCheckBtn->setDisabled(true);
+    ui->boostGenBtn->setDisabled(true);
+    ui->generateCRCTabBtn->setDisabled(true);
+    ui->checkCRCTabBtn->setDisabled(true);
     QWidget::repaint();
     if(ifFileExists(ui->filepathText->text())){
         try{
@@ -108,6 +124,10 @@ void MainWindow::on_checkCRCBtn_clicked()
             ui->infoLabel->setText("Something got wrong, try again...");
                 ui->checkCRCBtn->setDisabled(false);
                 ui->generateCRCBtn->setDisabled(false);
+                ui->boostCheckBtn->setDisabled(false);
+                ui->boostGenBtn->setDisabled(false);
+                ui->generateCRCTabBtn->setDisabled(false);
+                ui->checkCRCTabBtn->setDisabled(false);
         }
     }
     else{
@@ -116,6 +136,10 @@ void MainWindow::on_checkCRCBtn_clicked()
     }
     ui->checkCRCBtn->setDisabled(false);
     ui->generateCRCBtn->setDisabled(false);
+    ui->boostCheckBtn->setDisabled(false);
+    ui->boostGenBtn->setDisabled(false);
+    ui->generateCRCTabBtn->setDisabled(false);
+    ui->checkCRCTabBtn->setDisabled(false);
     timeEnd = clock();
     double timeElapsed = diffclock(timeStart, timeEnd);
     std::string timeString = "Time elapsed: " + std::to_string(timeElapsed) + " [sec]";
@@ -140,6 +164,10 @@ void MainWindow::on_boostGenBtn_clicked()
     ui->infoLabel->setText("Generating Boost CRC32...");
     ui->checkCRCBtn->setDisabled(true);
     ui->generateCRCBtn->setDisabled(true);
+    ui->boostCheckBtn->setDisabled(true);
+    ui->boostGenBtn->setDisabled(true);
+    ui->generateCRCTabBtn->setDisabled(true);
+    ui->checkCRCTabBtn->setDisabled(true);
     QWidget::repaint();
 
     if(ifFileExists(ui->filepathText->text())){
@@ -167,6 +195,10 @@ void MainWindow::on_boostGenBtn_clicked()
         catch(std::exception e){
             ui->checkCRCBtn->setDisabled(false);
             ui->generateCRCBtn->setDisabled(false);
+            ui->boostCheckBtn->setDisabled(false);
+            ui->boostGenBtn->setDisabled(false);
+            ui->generateCRCTabBtn->setDisabled(false);
+            ui->checkCRCTabBtn->setDisabled(false);
             ui->infoLabel->setText("Something got wrong, try again...");
         }
     }
@@ -176,6 +208,10 @@ void MainWindow::on_boostGenBtn_clicked()
     }
     ui->checkCRCBtn->setDisabled(false);
     ui->generateCRCBtn->setDisabled(false);
+    ui->boostCheckBtn->setDisabled(false);
+    ui->boostGenBtn->setDisabled(false);
+    ui->generateCRCTabBtn->setDisabled(false);
+    ui->checkCRCTabBtn->setDisabled(false);
     timeEnd = clock();
     double timeElapsed = diffclock(timeStart, timeEnd);
     std::string timeString = "Time elapsed: " + std::to_string(timeElapsed) + " [sec]";
@@ -189,6 +225,10 @@ void MainWindow::on_boostCheckBtn_clicked()
     ui->infoLabel->setText("Generating Boost CRC32...");
     ui->checkCRCBtn->setDisabled(true);
     ui->generateCRCBtn->setDisabled(true);
+    ui->boostCheckBtn->setDisabled(true);
+    ui->boostGenBtn->setDisabled(true);
+    ui->generateCRCTabBtn->setDisabled(true);
+    ui->checkCRCTabBtn->setDisabled(true);
     QWidget::repaint();
 
     if(ifFileExists(ui->filepathText->text())){
@@ -221,6 +261,10 @@ void MainWindow::on_boostCheckBtn_clicked()
         catch(std::exception e){
             ui->checkCRCBtn->setDisabled(false);
             ui->generateCRCBtn->setDisabled(false);
+            ui->boostCheckBtn->setDisabled(false);
+            ui->boostGenBtn->setDisabled(false);
+            ui->generateCRCTabBtn->setDisabled(false);
+            ui->checkCRCTabBtn->setDisabled(false);
             ui->infoLabel->setText("Something got wrong, try again...");
         }
     }
@@ -230,6 +274,113 @@ void MainWindow::on_boostCheckBtn_clicked()
     }
     ui->checkCRCBtn->setDisabled(false);
     ui->generateCRCBtn->setDisabled(false);
+    ui->boostCheckBtn->setDisabled(false);
+    ui->boostGenBtn->setDisabled(false);
+    ui->generateCRCTabBtn->setDisabled(false);
+    ui->checkCRCTabBtn->setDisabled(false);
+    timeEnd = clock();
+    double timeElapsed = diffclock(timeStart, timeEnd);
+    std::string timeString = "Time elapsed: " + std::to_string(timeElapsed) + " [sec]";
+    ui->timeLabel->setText(QString::fromStdString(timeString));
+}
+
+void MainWindow::on_generateCRCTabBtn_clicked()
+{
+    clock_t timeStart, timeEnd;
+    timeStart = clock();
+    // CRC-32
+    // 32 31 30 29 28 27 26 25 24 23 22 21 20 19 18 17 16 15 14 13 12 11 10 09 08 07 06 05 04 03 02 01 00
+    //	1  0  0  0  0  0  1  0  0  1  1  0  0  0  0  0  1  0  0  0  1  1  0  0  1  1  0  1  1  0  1  1  1
+    ui->infoLabel->setText("Generating CRC32 via Tab...");
+    ui->checkCRCBtn->setDisabled(true);
+    ui->generateCRCBtn->setDisabled(true);
+    ui->boostCheckBtn->setDisabled(true);
+    ui->boostGenBtn->setDisabled(true);
+    ui->generateCRCTabBtn->setDisabled(true);
+    ui->checkCRCTabBtn->setDisabled(true);
+    QWidget::repaint();
+
+    if(ifFileExists(ui->filepathText->text())){
+        try{
+            CRC crc;
+            std::string filepath = ui->filepathText->text().toUtf8().constData();
+            QString crcsum = QString::fromStdString(crc.countCRCviaTab(filepath));
+            ui->crcText->setText(crcsum.toUpper());
+            ui->infoLabel->setText("Your CRC32 checksum has been computed: " + ui->crcText->text());
+        }
+        catch(std::exception e){
+            ui->checkCRCBtn->setDisabled(false);
+            ui->generateCRCBtn->setDisabled(false);
+            ui->boostCheckBtn->setDisabled(false);
+            ui->boostGenBtn->setDisabled(false);
+            ui->generateCRCTabBtn->setDisabled(false);
+            ui->checkCRCTabBtn->setDisabled(false);
+            ui->infoLabel->setText("Something got wrong, try again...");
+        }
+    }
+    else{
+        ui->infoLabel->setText("This file is not correct!");
+        QMessageBox::information(this, tr("Warning"), "This file is not correct!");
+    }
+    ui->checkCRCBtn->setDisabled(false);
+    ui->generateCRCBtn->setDisabled(false);
+    ui->boostCheckBtn->setDisabled(false);
+    ui->boostGenBtn->setDisabled(false);
+    ui->generateCRCTabBtn->setDisabled(false);
+    ui->checkCRCTabBtn->setDisabled(false);
+    timeEnd = clock();
+    double timeElapsed = diffclock(timeStart, timeEnd);
+    std::string timeString = "Time elapsed: " + std::to_string(timeElapsed) + " [sec]";
+    ui->timeLabel->setText(QString::fromStdString(timeString));
+}
+
+void MainWindow::on_checkCRCTabBtn_clicked()
+{
+    clock_t timeStart, timeEnd;
+    timeStart = clock();
+    // CRC-32
+    // 32 31 30 29 28 27 26 25 24 23 22 21 20 19 18 17 16 15 14 13 12 11 10 09 08 07 06 05 04 03 02 01 00
+    //	1  0  0  0  0  0  1  0  0  1  1  0  0  0  0  0  1  0  0  0  1  1  0  0  1  1  0  1  1  0  1  1  1
+    ui->infoLabel->setText("Checking CRC32 via Tab...");
+    ui->checkCRCBtn->setDisabled(true);
+    ui->generateCRCBtn->setDisabled(true);
+    ui->boostCheckBtn->setDisabled(true);
+    ui->boostGenBtn->setDisabled(true);
+    ui->generateCRCTabBtn->setDisabled(true);
+    ui->checkCRCTabBtn->setDisabled(true);
+    QWidget::repaint();
+    if(ifFileExists(ui->filepathText->text())){
+        try{
+            CRC crc;
+            std::string filepath = ui->filepathText->text().toUtf8().constData();
+            QString crcsum = QString::fromStdString(crc.countCRCviaTab(filepath));
+            if(crcsum.toUpper() == ui->crcText->text().toUpper()){
+                ui->infoLabel->setText("CRC32 checksum is correct!");
+            }
+            else{
+                ui->infoLabel->setText("CRC32 checksum is not correct!\nCorrect CRC32: " + crcsum.toUpper());
+            }
+        }
+        catch(std::exception e){
+            ui->infoLabel->setText("Something got wrong, try again...");
+                ui->checkCRCBtn->setDisabled(false);
+                ui->generateCRCBtn->setDisabled(false);
+                ui->boostCheckBtn->setDisabled(false);
+                ui->boostGenBtn->setDisabled(false);
+                ui->generateCRCTabBtn->setDisabled(false);
+                ui->checkCRCTabBtn->setDisabled(false);
+        }
+    }
+    else{
+        ui->infoLabel->setText("This file is not correct!");
+        QMessageBox::information(this, tr("Warning"), "This file is not correct!");
+    }
+    ui->checkCRCBtn->setDisabled(false);
+    ui->generateCRCBtn->setDisabled(false);
+    ui->boostCheckBtn->setDisabled(false);
+    ui->boostGenBtn->setDisabled(false);
+    ui->generateCRCTabBtn->setDisabled(false);
+    ui->checkCRCTabBtn->setDisabled(false);
     timeEnd = clock();
     double timeElapsed = diffclock(timeStart, timeEnd);
     std::string timeString = "Time elapsed: " + std::to_string(timeElapsed) + " [sec]";

@@ -6,7 +6,8 @@ class CRC {
 private:
 
 public:
-    std::string countCRC(std::string fileName);
+    std::string countCRC(std::string filePath);
+    std::string countCRCviaTab(std::string filePath);
 };
 
 

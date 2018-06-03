@@ -26,6 +26,12 @@ private slots:
 
     void on_boostCheckBtn_clicked();
 
+    void on_supaBtn_clicked();
+
+    void on_generateCRCTabBtn_clicked();
+
+    void on_checkCRCTabBtn_clicked();
+
 private:
     Ui::MainWindow *ui;
 };
